@@ -1,7 +1,7 @@
 /* Main Body Styles */
 body {
     font-family: "Open Sans", sans-serif;
-    background-color: #ebebeb;
+    background-color: #fff;
 }
 
 .welcome {
@@ -42,6 +42,11 @@ a {
     background-color: #d3353e;
 }
 
+/* .navbar-home {
+    background: linear-gradient(to bottom, #d3353e 0%, rgba(0,0,0,0) 100%);
+    border-bottom: none;
+} */
+
 .navbar-default  .navbar-nav li a {
     color: #fff;
 }
@@ -54,8 +59,15 @@ a {
 }
 
 .navbar-default .navbar-brand {
-    color: #000;
-    font-size: 75px;
+    color: #d3353e;
+    font-size: 150px;
+    text-shadow: -5px 0 #fff, 0 5px #fff, 5px 0 #fff, 0 -5px #fff;
+}
+
+#logo {
+    font-family: "Pacifico", cursive;
+    font-size: 40px;
+    padding: 20px 0;
 }
 
 /* Landing Page Styles */
@@ -83,8 +95,8 @@ form {
 }
 
 /* Results Page Styles */
-#results {
-    margin-top: 50px;
+#results, .content {
+    margin-top: 90px;
 }
 
 #showtimes {
@@ -110,4 +122,21 @@ form {
     /* position: sticky;
     top: 0; */
     width: 100%;
+}
+
+/* About Page Styles */
+.content h1 {
+    color: #000;
+    text-shadow: none;
+    text-align: left;
+    padding-top: 20px;
+}
+
+.profile {
+    max-width: 200px;
+    border-radius: 50%;
+}
+
+.about {
+    margin-bottom: 30px;
 }
