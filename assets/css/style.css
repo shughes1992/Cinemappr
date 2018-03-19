@@ -1,6 +1,7 @@
 /* Main Body Styles */
 body {
     font-family: "Open Sans", sans-serif;
+    background-color: #ebebeb;
 }
 
 .welcome {
@@ -31,6 +32,11 @@ h1 {
     text-shadow: 3px 3px rgba(0, 0, 0, .8);
 }
 
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
 /* Navigation Styles */
 .navbar {
     background-color: #d3353e;
@@ -43,12 +49,12 @@ h1 {
 .navbar-brand {
     transform: translateX(-50%);
     top: -7px;
-    left: 50%;
+    left: 51%;
     position: absolute;
 }
 
 .navbar-default .navbar-brand {
-    color: #fff;
+    color: #000;
     font-size: 75px;
 }
 
@@ -64,6 +70,7 @@ form {
     background-color: #fff;
     padding: 25px;
     border-radius: 15px;
+    /* margin: 0 10px; */
     /* opacity: .95; */
 }
 
@@ -73,4 +80,34 @@ form {
     background-color: #d3353e;
     padding: 10px;
     font-weight: 700;
+}
+
+/* Results Page Styles */
+#results {
+    margin-top: 50px;
+}
+
+#showtimes {
+    background-color: #ebebeb;
+    min-height: 671px;
+}
+
+.showtime-listings {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+#map-results {
+    /* position: fixed;
+    top: 50;
+    right: 0; */
+    border: 2px solid red;
+}
+
+#map-results img {
+    /* position: sticky;
+    top: 0; */
+    width: 100%;
 }
