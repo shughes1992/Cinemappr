@@ -112,16 +112,12 @@ form {
 }
 
 #map-results {
-    /* position: fixed;
-    top: 50;
-    right: 0; */
-    border: 2px solid red;
+
 }
 
 #map-results img {
-    /* position: sticky;
-    top: 0; */
-    width: 100%;
+    position: fixed;
+    max-width: 585px;
 }
 
 /* About Page Styles */
