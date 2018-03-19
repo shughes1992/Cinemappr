@@ -1,0 +1,76 @@
+/* Main Body Styles */
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+.welcome {
+    height: 100vh;
+    display: block;
+    position: relative;
+}
+  
+.welcome::after {
+    content: "";
+    background-image: url(../images/breakfast-at-tiffanys.jpg);
+    background-size: 100% 100%;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+}
+
+h1 {
+    color: #fff;
+    opacity: 1;
+    text-align: center;
+    font-family: "Pacifico", cursive;
+    margin: 20px auto;
+    text-shadow: 3px 3px rgba(0, 0, 0, .8);
+}
+
+/* Navigation Styles */
+.navbar {
+    background-color: #d3353e;
+}
+
+.navbar-default  .navbar-nav li a {
+    color: #fff;
+}
+
+.navbar-brand {
+    transform: translateX(-50%);
+    top: -7px;
+    left: 50%;
+    position: absolute;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+    font-size: 75px;
+}
+
+/* Landing Page Styles */
+.landing-page {
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+form {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    /* opacity: .95; */
+}
+
+.submit-btn {
+    width: 100%;
+    color: #fff;
+    background-color: #d3353e;
+    padding: 10px;
+    font-weight: 700;
+}
