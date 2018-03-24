@@ -25,4 +25,16 @@ app.post('/theaters', urlencodedParser, (req, res) => {
 
 app.get('/location', (req, res) => res.json(searchObj))
 
+
+app.get('/getData', (req, res) => {
+    const date = searchObj.date
+    const zip = searchObj.zipcode
+    reqPromise('http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip + '&api_key=8dyfezutfxys5435q4ehcqkp')
+    .then((response) => {
+        res.json(response)
+    }).catch((err) => {
+        console.error(err)
+    })
+})
+
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
