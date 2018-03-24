@@ -30,14 +30,12 @@
     <script>
         // created this function to get rid of the error. To use google maps, you need to call this to define initMap that is called in the google maps script on the bottom.
         function initMap() {};// this is for google maps. This will cause error if this function is not in the global scope
-
         $("#start").on("click", function () {
             event.preventDefault();
             var zip1 = $("#zipcode").val();
             var date = $("#date").val();
             console.log(zip1);
             console.log(date);
-
             var queryUrl1 = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip1 + '&api_key=8dyfezutfxys5435q4ehcqkp';
             $.ajax({
                 method: "GET",
@@ -46,6 +44,7 @@
                 
                 var uniqueTheatreArray = [];
                 var displayObject = new Object();
+              
                 var theaterData = [];
 
                 for (var i = 0; i < response1.length; i++) {
@@ -69,35 +68,26 @@
                     }
                     
                 }
-
+              
         console.log(theaterData);
 
         //ES6 to separate out the duplicates
         // var uniqueTheatre = a => uniqueTheatreArray.push([...new Set(a)]);
         // uniqueTheatre(movieTheatreNames);
-
         //going to append each theatre into a div
         // for (var i =0; i<uniqueTheatreArray.length; i++) {
         //     $("#theatreHere").append(uniqueTheatreArray[i]);
         // }
-
         //google maps api trying to get lat and long
         var key = 'AIzaSyASKnjScxmEcAhuUUchHloDaPz3X3q7KV0';
         var queryUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=' + key;
-
         $.ajax({
             method: "GET",
             url: queryUrl
         }).then(function (response) {
-
-
         }) //==================END OF GOOGLE MAPS API AJAX===================================
-
             }) //==================END OF GRACENOTE DEVELOPER API AJAX===================================
-
         })//=====================END OF THE CLICK EVENT ===============================
-
-
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv7taMhfo9vK1l-HC1iBruuwsods1K5Hg&callback=initMap"></script>
 </body>
