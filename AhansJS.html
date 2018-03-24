@@ -27,104 +27,121 @@
 
     <div id="theatreHere"></div>
 
+    <!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+
     <script>
-        // created this function to get rid of the error. To use google maps, you need to call this to define initMap that is called in the google maps script on the bottom.
-        function initMap() {};// this is for google maps. This will cause error if this function is not in the global scope
 
-        $("#start").on("click", function () {
-            event.preventDefault();
-            var zip1 = $("#zipcode").val();
-            var date = $("#date").val();
-            console.log(zip1);
-            console.log(date);
+        var theaterData = [
+            {
+                "theater": "University Penn 6",
+                "showtime": "1:20 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "University Penn 6",
+                "showtime": "3:50 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "University Penn 6",
+                "showtime": "4:40 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "University Penn 6",
+                "showtime": "8:00 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "University Penn 6",
+                "showtime": "10:15 AM",
+                "title": "Tomb Raider"
+            },
+            {
+                "theater": "University Penn 6",
+                "showtime": "4:05 PM",
+                "title": "Tomb Raider"
+            },
+            {
+                "theater": "PFS Roxy Theater",
+                "showtime": "3:15 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "PFS Roxy Theater",
+                "showtime": "6:45 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "PFS Roxy Theater",
+                "showtime": "9:30 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "AMC N Broadstreet 7",
+                "showtime": "1:20 PM",
+                "title": "A Wrinkle in Time"
+            },
+            {
+                "theater": "AMC N Broadstreet 7",
+                "showtime": "1:20 PM",
+                "title": "A Wrinkle in Time"
+            }]
 
-            //gracenote api - inputing zipcode and date value in this api to obtain name of the theaters to plug into google maps api
+        console.log(theaterData);
 
-            var queryUrl1 = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip1 + '&api_key=2dp7mrfsmqm3cgupxx4vh5e6';
-            $.ajax({
-                method: "GET",
-                url: queryUrl1
-            }).then(function (response1) {
-                // var theaterName = response1.showtimes[0].theatre.name;
-                //============================================================================================================================
-                //getting Names of the theatres
-                //creating variable to hold unique movie theatre names instead of duplicates in object form
-                var uniqueTheatreArray = [];
-                var displayObject = new Object();
-                var displayArray = [];
+        var holder = {};
 
-                for (var i = 0; i < response1.length; i++) {
+        theaterData.forEach(function (element) {
+            var identifier = element.theater;
+            if (holder[identifier]) {
+                holder[identifier] = element.theater;
+            } else {
+                holder[identifier] = element;
+            };
+        });
+        
+        var theaterData = [];
 
-                    //movie titles
-                    var movieTitles = response1[i].title;
-                    // $("#theatreHere").append("<div class='jumbotron'>" + movieTitles + "</div>");
+        for (var identifier in holder) {
+            theaterData.push({theater: holder[identifier]});
+        }
 
-                    for (var j = 0; j < response1[i].showtimes.length; j++) {
-
-                        //console.log(response1[i].showtimes[j].theatre.name); this gives us all the names of the theatre
-                        var listOfTheatreNames = response1[i].showtimes[j].theatre.name;
-
-                        // searched the dateTime and used regex to grab hold of the T marker and anything that followed it which is the time of the movie.  Then sliced what I need and then format the military time using moment.js to display "american" time.
-                        var times = JSON.stringify(response1[i].showtimes[j].dateTime.match(/T.*/)).slice(3, 8);
-                        var timesFormat = moment(times, "H:mm").format("LT");
-
-                        //pushing names of the theatre, showtimes, and titles to displayArray
-                        displayArray.push({ names: listOfTheatreNames, times: timesFormat, titles: movieTitles} );
-                    }
-                }
-                
-                for(var key in displayArray) {
-                    if(displayObject[displayArray[key].names]=== undefined && displayObject[displayArray[key].titles] === undefined){
-                        displayObject[displayArray[key].names] = displayArray[key].names+displayArray[key].titles;
-                    }
-                    
-                }
-                console.log(displayObject);
-
-            //     console.log(displayArray.sort(function (a, b) {
-            //         var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-            //         var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-            //         if (nameA < nameB) {
-            //             return -1;
-            //         }
-            //         if (nameA > nameB) {
-            //             return 1;
-            //         }    
-
-            //         // names must be equal
-            //         return 0;
-            
-            // }));
-
-        console.log(displayArray);
-
-        //ES6 to separate out the duplicates
-        // var uniqueTheatre = a => uniqueTheatreArray.push([...new Set(a)]);
-        // uniqueTheatre(movieTheatreNames);
-
-        //going to append each theatre into a div
-        // for (var i =0; i<uniqueTheatreArray.length; i++) {
-        //     $("#theatreHere").append(uniqueTheatreArray[i]);
-        // }
-
-        //google maps api trying to get lat and long
-        var key = 'AIzaSyASKnjScxmEcAhuUUchHloDaPz3X3q7KV0';
-        var queryUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=' + key;
-
-        $.ajax({
-            method: "GET",
-            url: queryUrl
-        }).then(function (response) {
+        console.log(theaterData);
 
 
-        }) //==================END OF GOOGLE MAPS API AJAX===================================
-
-            }) //==================END OF GRACENOTE DEVELOPER API AJAX===================================
-
-        })//=====================END OF THE CLICK EVENT ===============================
 
 
+        for (index: String, subJson: JSON) in json { // your whole json is an array, "[" in the beginning indicates that
+     for (index: String, subSubJson: JSON) in subJson["showtimes"] { // in all "showtime" arrays: 
+              self.<YOUR ARRAY>.append(getTime(subSubJson["dateTime"].string!))   // append processed value for key "dateTime" to <YOUR ARRAY>
+            }
+        }
+
+func getTime(input:String) -> String {
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+    let date = dateFormatter.dateFromString(input)
+    let calendar = NSCalendar.currentCalendar()
+    let comp = calendar.components((.CalendarUnitHour | .CalendarUnitMinute), fromDate: date!)
+    let hour = comp.hour
+    let minute = comp.minute
+    return ("\(hour):\(minute)")
+}
+console.log(getTime);
     </script>
+
+</body>
+
+</html>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv7taMhfo9vK1l-HC1iBruuwsods1K5Hg&callback=initMap"></script>
 </body>
 

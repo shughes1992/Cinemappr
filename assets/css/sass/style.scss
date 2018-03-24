@@ -1,9 +1,16 @@
 /* Main Body Styles */
-$white: #fff;
-$themecolor: #d3353e;
+$white: rgb(255, 255, 255);
+$theme-color: #d3353e;
+$showtime-background: #ffffff;
+$logo-font: "Pacifico", cursive;
+$body-font: "Open Sans", sans-serif;
+$form-background: #ffffff;
+
+
+
 
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: $body-font;
     background-color: $white;
 }
 
@@ -27,7 +34,7 @@ body {
 }
 
 h1 {
-    color: #fff;
+    color: $white;
     opacity: 1;
     text-align: center;
     font-family: "Pacifico", cursive;
@@ -42,7 +49,7 @@ a {
 
 /* Navigation Styles */
 .navbar {
-    background-color: $themecolor;
+    background-color: $theme-color;
 }
 
 /* .navbar-home {
@@ -62,13 +69,19 @@ a {
 }
 
 .navbar-default .navbar-brand {
-    color: $themecolor;
+    color: $theme-color;
     font-size: 150px;
     text-shadow: -5px 0 $white, 0 5px $white, 5px 0 $white, 0 -5px $white;
 }
 
+#about-link a {
+    font-family: $logo-font;
+    padding: 20px 0;
+    top: 10px;
+}
+
 #logo {
-    font-family: "Pacifico", cursive;
+    font-family: $logo-font;
     font-size: 40px;
     padding: 20px 0;
 }
@@ -82,7 +95,7 @@ a {
 }
 
 form {
-    background-color: $white;
+    background-color: $form-background;
     padding: 25px;
     border-radius: 15px;
     /* margin: 0 10px; */
@@ -92,7 +105,7 @@ form {
 .submit-btn {
     width: 100%;
     color: #fff;
-    background-color: $themecolor;
+    background-color: $theme-color;
     padding: 10px;
     font-weight: 700;
 }

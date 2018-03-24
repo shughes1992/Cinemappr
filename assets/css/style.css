@@ -1,7 +1,7 @@
 /* Main Body Styles */
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #fff; }
+  background-color: white; }
 
 .welcome {
   height: 100vh;
@@ -21,7 +21,7 @@ body {
   z-index: -1; }
 
 h1 {
-  color: #fff;
+  color: white;
   opacity: 1;
   text-align: center;
   font-family: "Pacifico", cursive;
@@ -29,7 +29,7 @@ h1 {
   text-shadow: 3px 3px rgba(0, 0, 0, 0.8); }
 
 a {
-  color: #fff;
+  color: white;
   text-decoration: none; }
 
 /* Navigation Styles */
@@ -41,7 +41,7 @@ a {
     border-bottom: none;
 } */
 .navbar-default .navbar-nav li a {
-  color: #fff; }
+  color: white; }
 
 .navbar-brand {
   transform: translateX(-50%);
@@ -52,7 +52,12 @@ a {
 .navbar-default .navbar-brand {
   color: #d3353e;
   font-size: 150px;
-  text-shadow: -5px 0 #fff, 0 5px #fff, 5px 0 #fff, 0 -5px #fff; }
+  text-shadow: -5px 0 white, 0 5px white, 5px 0 white, 0 -5px white; }
+
+#about-link a {
+  font-family: "Pacifico", cursive;
+  padding: 20px 0;
+  top: 10px; }
 
 #logo {
   font-family: "Pacifico", cursive;
@@ -67,7 +72,7 @@ a {
   transform: translateY(-50%); }
 
 form {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 25px;
   border-radius: 15px;
   /* margin: 0 10px; */
@@ -89,7 +94,7 @@ form {
   min-height: 671px; }
 
 .showtime-listings {
-  background-color: #fff;
+  background-color: white;
   border-radius: 15px;
   padding: 20px;
   margin: 20px auto; }
