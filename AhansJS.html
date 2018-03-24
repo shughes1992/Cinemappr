@@ -27,6 +27,118 @@
 
     <div id="theatreHere"></div>
 
+<<<<<<< HEAD
+    <!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+
+    <script>
+
+        var theaterData = [
+            {
+                "theater": "University Penn 6",
+                "showtime": "1:20 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "University Penn 6",
+                "showtime": "3:50 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "University Penn 6",
+                "showtime": "4:40 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "University Penn 6",
+                "showtime": "8:00 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "University Penn 6",
+                "showtime": "10:15 AM",
+                "title": "Tomb Raider"
+            },
+            {
+                "theater": "University Penn 6",
+                "showtime": "4:05 PM",
+                "title": "Tomb Raider"
+            },
+            {
+                "theater": "PFS Roxy Theater",
+                "showtime": "3:15 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "PFS Roxy Theater",
+                "showtime": "6:45 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "PFS Roxy Theater",
+                "showtime": "9:30 PM",
+                "title": "Black Panther"
+            },
+            {
+                "theater": "AMC N Broadstreet 7",
+                "showtime": "1:20 PM",
+                "title": "A Wrinkle in Time"
+            },
+            {
+                "theater": "AMC N Broadstreet 7",
+                "showtime": "1:20 PM",
+                "title": "A Wrinkle in Time"
+            }]
+
+        console.log(theaterData);
+
+        var holder = {};
+
+        theaterData.forEach(function (element) {
+            var identifier = element.theater;
+            if (holder[identifier]) {
+                holder[identifier] = element.theater;
+            } else {
+                holder[identifier] = element;
+            };
+        });
+        
+        var theaterData = [];
+
+        for (var identifier in holder) {
+            theaterData.push({theater: holder[identifier]});
+        }
+
+        console.log(theaterData);
+
+
+
+
+        for (index: String, subJson: JSON) in json { // your whole json is an array, "[" in the beginning indicates that
+     for (index: String, subSubJson: JSON) in subJson["showtimes"] { // in all "showtime" arrays: 
+              self.<YOUR ARRAY>.append(getTime(subSubJson["dateTime"].string!))   // append processed value for key "dateTime" to <YOUR ARRAY>
+            }
+        }
+
+func getTime(input:String) -> String {
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+    let date = dateFormatter.dateFromString(input)
+    let calendar = NSCalendar.currentCalendar()
+    let comp = calendar.components((.CalendarUnitHour | .CalendarUnitMinute), fromDate: date!)
+    let hour = comp.hour
+    let minute = comp.minute
+    return ("\(hour):\(minute)")
+}
+console.log(getTime);
+=======
     <script>
         // created this function to get rid of the error. To use google maps, you need to call this to define initMap that is called in the google maps script on the bottom.
         function initMap() {};// this is for google maps. This will cause error if this function is not in the global scope
@@ -88,7 +200,12 @@
         }) //==================END OF GOOGLE MAPS API AJAX===================================
             }) //==================END OF GRACENOTE DEVELOPER API AJAX===================================
         })//=====================END OF THE CLICK EVENT ===============================
+>>>>>>> ddb80528f3347e0d13d20dea8809a591a71f458d
     </script>
+
+</body>
+
+</html>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv7taMhfo9vK1l-HC1iBruuwsods1K5Hg&callback=initMap"></script>
 </body>
 
