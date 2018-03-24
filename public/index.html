@@ -13,12 +13,12 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800|Pacifico" rel="stylesheet">
-    <!-- Font Awesome -->
-    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
     <!-- Bootstrap Javascript and jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+    <!-- Moment -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- Custom JavaScript -->
     <script src="assets/javascript/index.js"></script>
 </head>
@@ -76,12 +76,14 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label for="location">*Where</label>
-                                                <input type="text" class="form-control" id="location" name="location" placeholder="Zipcode">
+                                                <!-- <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+                                                    maxlength="5" min="0" id="zipcode" name="location">  -->
+                                                    <input type="number" maxlength="5" min="0" id="zipcode" name="zipcode"> 
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="date">*When</label>
-                                                    <input type="text" class="form-control" id="date" name="date" placeholder="DD/MM/YYYY">
+                                                    <input type="date" class="form-control" id="date" name="date">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -98,20 +100,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="movie-title">Movie Title</label>
-                                                    <input type="text" class="form-control" id="movie-title" name="movie-title" placeholder="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="movie-title">Movie Theater</label>
-                                                    <input type="text" class="form-control" id="movie-title" name="movie-title" placeholder="">
-                                                </div>
+                                                <p>
+                                                    <span class="glyphicon glyphicon-plus-sign"></span> More options</p>
                                             </div>
                                         </div>
-                                        <!-- <a href="theaters.html"> -->
-                                            <!-- <button type="button" class="submit-btn" id="search">Search</button> -->
-                                        <!-- </a> -->
-                                        <input type="submit" value="Search" class="submit-btn" id="search" />
+                                        <input type="submit" value="Search" class="submit-btn" id="start">
                                     </div>
                                 </form>
                             </div>

@@ -6,7 +6,7 @@ $(document).ready(function(){
         method: "GET"
     }).then(response => {
         console.log(response)
-        $("#location").val(response.location)
+        $("#zipcode").val(response.zipcode)
         $("#date").val(response.date)
         $("#radius").val(response.radius)
     })

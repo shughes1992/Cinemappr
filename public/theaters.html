@@ -19,6 +19,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+    <!-- Moment -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- Custom JavaScript -->
     <script src="assets/javascript/theaters.js"></script>
 </head>
@@ -64,24 +66,24 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-6" id="showtimes">
+                <div class="col-md-6" id="search-results">
                     <form>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="location">*Where</label>
-                                    <input type="text" class="form-control" id="location" placeholder="Zipcode">
-                                </div>
+                                    <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+                                        maxlength="5" min="0" id="zipcode" name="zipcode" placeholder="Zipcode"> </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="date">*When</label>
-                                        <input type="text" class="form-control" id="date" placeholder="DD/MM/YYYY">
+                                        <input type="date" class="form-control" id="date" name="date">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="radius">Radius</label>
-                                        <select class="form-control" id="radius">
+                                        <select class="form-control" id="radius" name="radius">
                                             <option value="1">1 mi</option>
                                             <option value="5" selected>5 mi</option>
                                             <option value="10">10 mi</option>
@@ -95,75 +97,16 @@
                                     <p>
                                         <span class="glyphicon glyphicon-plus-sign"></span> More options</p>
                                 </div>
-                                <!-- <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="movie-title">Movie Title</label>
-                                        <input type="text" class="form-control" id="movie-title" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="movie-title">Movie Theater</label>
-                                        <input type="text" class="form-control" id="movie-title" placeholder="">
-                                    </div>
-                                </div> -->
                             </div>
-                            <button class="submit-btn">Search</button>
+                            <input type="submit" value="Search" class="submit-btn" id="start">
                         </div>
                     </form>
 
-                    <div class="showtime-listings">
-                        <div class="row">
-                            <div class="col-md-9">
-                                <h3>Theater Name</h3>
-                            </div>
-                            <div class="col-md-3">
+                    <div id="movies"></div>
 
-                            </div>
-                        </div>
-
-                        <hr>
-                        <h4>Movie Title</h4>
-                        <h5>Standard: </h5>
-                        <h5>3D: </h5>
-                    </div>
-
-                    <div class="showtime-listings">
-                        <div class="row">
-                            <div class="col-md-9">
-                                <h3>Theater Name</h3>
-                            </div>
-                            <div class="col-md-3">
-
-                            </div>
-                        </div>
-
-                        <hr>
-                        <h4>Movie Title</h4>
-                        <h5>Standard: </h5>
-                        <h5>3D: </h5>
-                    </div>
-
-                    <div class="showtime-listings">
-                        <div class="row">
-                            <div class="col-md-9">
-                                <h3>Theater Name</h3>
-                            </div>
-                            <div class="col-md-3">
-
-                            </div>
-                        </div>
-
-                        <hr>
-                        <h4>Movie Title</h4>
-                        <h5>Standard: </h5>
-                        <h5>3D: </h5>
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-6" id="map-results">
-                        <img src="assets/images/map-placeholder.png" alt="Google Maps">
-                </div>
+                <!-- <div class="col-md-6" id="map-results">
+                    <img src="assets/images/map-placeholder.png" alt="Google Maps">
+                </div> -->
 
             </div>
         </div>
