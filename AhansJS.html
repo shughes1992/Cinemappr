@@ -36,55 +36,41 @@
             var date = $("#date").val();
             console.log(zip1);
             console.log(date);
-            //gracenote api - inputing zipcode and date value in this api to obtain name of the theaters to plug into google maps api
-            var queryUrl1 = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip1 + '&api_key=2dp7mrfsmqm3cgupxx4vh5e6';
+            var queryUrl1 = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip1 + '&api_key=8dyfezutfxys5435q4ehcqkp';
             $.ajax({
                 method: "GET",
                 url: queryUrl1
             }).then(function (response1) {
-                // var theaterName = response1.showtimes[0].theatre.name;
-                //============================================================================================================================
-                //getting Names of the theatres
-                //creating variable to hold unique movie theatre names instead of duplicates in object form
+                
                 var uniqueTheatreArray = [];
                 var displayObject = new Object();
-                var displayArray = [];
+              
+                var theaterData = [];
+
                 for (var i = 0; i < response1.length; i++) {
-                    //movie titles
-                    var movieTitles = response1[i].title;
-                    // $("#theatreHere").append("<div class='jumbotron'>" + movieTitles + "</div>");
+
+                    var movieTitles = response1[i].title; // Get name of movie
+
                     for (var j = 0; j < response1[i].showtimes.length; j++) {
-                        //console.log(response1[i].showtimes[j].theatre.name); this gives us all the names of the theatre
-                        var listOfTheatreNames = response1[i].showtimes[j].theatre.name;
-                        // searched the dateTime and used regex to grab hold of the T marker and anything that followed it which is the time of the movie.  Then sliced what I need and then format the military time using moment.js to display "american" time.
-                        var times = JSON.stringify(response1[i].showtimes[j].dateTime.match(/T.*/)).slice(3, 8);
-                        var timesFormat = moment(times, "H:mm").format("LT");
-                        //pushing names of the theatre, showtimes, and titles to displayArray
-                        displayArray.push({ names: listOfTheatreNames, times: timesFormat, titles: movieTitles} );
+
+                        var listOfTheatreNames = response1[i].showtimes[j].theatre.name; // Get name of theater
+                        var times = JSON.stringify(response1[i].showtimes[j].dateTime.match(/T.*/)).slice(3, 8); // Get showtime
+                        var timesFormat = moment(times, "H:mm").format("LT"); // Parse showtime format
+
+                        // Push properties theater, showtime, and time to var theaterData
+                        theaterData.push({ theater: listOfTheatreNames, showtime: timesFormat, title: movieTitles} );
                     }
                 }
                 
-                for(var key in displayArray) {
-                    if(displayObject[displayArray[key].names]=== undefined && displayObject[displayArray[key].titles] === undefined){
-                        displayObject[displayArray[key].names] = displayArray[key].names+displayArray[key].titles;
+                for(var key in theaterData) {
+                    if(displayObject[theaterData[key].names]=== undefined && displayObject[theaterData[key].titles] === undefined){
+                        displayObject[theaterData[key].names] = theaterData[key].names+theaterData[key].titles;
                     }
                     
                 }
-                console.log(displayObject);
-            //     console.log(displayArray.sort(function (a, b) {
-            //         var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-            //         var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-            //         if (nameA < nameB) {
-            //             return -1;
-            //         }
-            //         if (nameA > nameB) {
-            //             return 1;
-            //         }    
-            //         // names must be equal
-            //         return 0;
-            
-            // }));
-        console.log(displayArray);
+              
+        console.log(theaterData);
+
         //ES6 to separate out the duplicates
         // var uniqueTheatre = a => uniqueTheatreArray.push([...new Set(a)]);
         // uniqueTheatre(movieTheatreNames);
