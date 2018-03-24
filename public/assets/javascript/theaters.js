@@ -1,6 +1,8 @@
 $(document).ready(function(){
     console.log("theater page linked")
 
+    // TODO: write addGoogleMaps function
+
     $.ajax({
         url: "/location",
         method: "GET"
@@ -47,6 +49,8 @@ $(document).ready(function(){
         }
 
         console.log(theaterData);
+
+        // TODO: call addGoogleMaps function, passing theaterData
 
         var holder = {};
 
@@ -154,10 +158,7 @@ $(document).ready(function(){
                     jumbotron.append("<p id='showtimes'>" + final_theater_object.movies_with_times[k].showtimes[l]);
                 }
             }
-
-
         }
-
     })
 
 
