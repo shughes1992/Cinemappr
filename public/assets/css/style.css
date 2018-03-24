@@ -100,8 +100,16 @@ form {
 }
 
 #showtimes {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px solid #d3353e;
+}
+
+#search-results {
     background-color: #ebebeb;
-    min-height: 671px;
+    min-height: 80vh;
 }
 
 .showtime-listings {
@@ -109,10 +117,6 @@ form {
     border-radius: 15px;
     padding: 20px;
     margin: 20px auto;
-}
-
-#map-results {
-
 }
 
 #map-results img {
