@@ -90,6 +90,7 @@ form {
   margin-top: 90px; }
 
 #showtimes {
+<<<<<<< HEAD:assets/css/style.css
   background-color: #ebebeb;
   min-height: 671px; }
 
@@ -98,6 +99,26 @@ form {
   border-radius: 15px;
   padding: 20px;
   margin: 20px auto; }
+=======
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px solid #d3353e;
+}
+
+#search-results {
+    background-color: #ebebeb;
+    min-height: 80vh;
+}
+
+.showtime-listings {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+}
+>>>>>>> ddb80528f3347e0d13d20dea8809a591a71f458d:public/assets/css/style.css
 
 #map-results img {
   position: fixed;
