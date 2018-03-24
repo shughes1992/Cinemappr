@@ -30,16 +30,13 @@
     <script>
         // created this function to get rid of the error. To use google maps, you need to call this to define initMap that is called in the google maps script on the bottom.
         function initMap() {};// this is for google maps. This will cause error if this function is not in the global scope
-
         $("#start").on("click", function () {
             event.preventDefault();
             var zip1 = $("#zipcode").val();
             var date = $("#date").val();
             console.log(zip1);
             console.log(date);
-
             //gracenote api - inputing zipcode and date value in this api to obtain name of the theaters to plug into google maps api
-
             var queryUrl1 = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip1 + '&api_key=2dp7mrfsmqm3cgupxx4vh5e6';
             $.ajax({
                 method: "GET",
@@ -52,22 +49,16 @@
                 var uniqueTheatreArray = [];
                 var displayObject = new Object();
                 var displayArray = [];
-
                 for (var i = 0; i < response1.length; i++) {
-
                     //movie titles
                     var movieTitles = response1[i].title;
                     // $("#theatreHere").append("<div class='jumbotron'>" + movieTitles + "</div>");
-
                     for (var j = 0; j < response1[i].showtimes.length; j++) {
-
                         //console.log(response1[i].showtimes[j].theatre.name); this gives us all the names of the theatre
                         var listOfTheatreNames = response1[i].showtimes[j].theatre.name;
-
                         // searched the dateTime and used regex to grab hold of the T marker and anything that followed it which is the time of the movie.  Then sliced what I need and then format the military time using moment.js to display "american" time.
                         var times = JSON.stringify(response1[i].showtimes[j].dateTime.match(/T.*/)).slice(3, 8);
                         var timesFormat = moment(times, "H:mm").format("LT");
-
                         //pushing names of the theatre, showtimes, and titles to displayArray
                         displayArray.push({ names: listOfTheatreNames, times: timesFormat, titles: movieTitles} );
                     }
@@ -80,7 +71,6 @@
                     
                 }
                 console.log(displayObject);
-
             //     console.log(displayArray.sort(function (a, b) {
             //         var nameA = a.name.toUpperCase(); // ignore upper and lowercase
             //         var nameB = b.name.toUpperCase(); // ignore upper and lowercase
@@ -90,40 +80,28 @@
             //         if (nameA > nameB) {
             //             return 1;
             //         }    
-
             //         // names must be equal
             //         return 0;
             
             // }));
-
         console.log(displayArray);
-
         //ES6 to separate out the duplicates
         // var uniqueTheatre = a => uniqueTheatreArray.push([...new Set(a)]);
         // uniqueTheatre(movieTheatreNames);
-
         //going to append each theatre into a div
         // for (var i =0; i<uniqueTheatreArray.length; i++) {
         //     $("#theatreHere").append(uniqueTheatreArray[i]);
         // }
-
         //google maps api trying to get lat and long
         var key = 'AIzaSyASKnjScxmEcAhuUUchHloDaPz3X3q7KV0';
         var queryUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=' + key;
-
         $.ajax({
             method: "GET",
             url: queryUrl
         }).then(function (response) {
-
-
         }) //==================END OF GOOGLE MAPS API AJAX===================================
-
             }) //==================END OF GRACENOTE DEVELOPER API AJAX===================================
-
         })//=====================END OF THE CLICK EVENT ===============================
-
-
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv7taMhfo9vK1l-HC1iBruuwsods1K5Hg&callback=initMap"></script>
 </body>

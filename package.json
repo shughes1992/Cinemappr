@@ -1,0 +1,22 @@
+{
+  "name": "cinemappr",
+  "version": "1.0.0",
+  "description": "An interactive movie theater location and showtime listing application integrated with Google Maps",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lianagitsit/Cinemappr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lianagitsit/Cinemappr/issues"
+  },
+  "homepage": "https://github.com/lianagitsit/Cinemappr#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
