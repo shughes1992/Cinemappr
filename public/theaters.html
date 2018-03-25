@@ -73,7 +73,7 @@
                                 <div class="col-md-4">
                                     <label for="location">*Where</label>
                                     <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
-                                        maxlength="5" min="0" id="zipcode" name="zipcode" placeholder="Zipcode"> </div>
+                                        maxlength="5" min="0" class="form-control" id="zipcode" name="zipcode" placeholder="Zipcode"> </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="date">*When</label>
@@ -96,6 +96,14 @@
                                 <div class="col-md-12">
                                     <p>
                                         <span class="glyphicon glyphicon-plus-sign"></span> More options</p>
+                                    <div class="form-group">
+                                        <label for="movie-title">Movie Title</label>
+                                        <input type="text" class="form-control" id="movie-title" name="title" placeholder="Optional">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="movie-title">Movie Theater</label>
+                                        <input type="text" class="form-control" id="movie-theater" name="theater" placeholder="Optional">
+                                    </div>
                                 </div>
                             </div>
                             <input type="submit" value="Search" class="submit-btn" id="start">
@@ -104,12 +112,12 @@
 
                     <div id="movies"></div>
 
-                <!-- <div class="col-md-6" id="map-results">
+                    <!-- <div class="col-md-6" id="map-results">
                     <img src="assets/images/map-placeholder.png" alt="Google Maps">
                 </div> -->
 
+                </div>
             </div>
-        </div>
     </section>
 
 </body>
