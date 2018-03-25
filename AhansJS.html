@@ -27,7 +27,6 @@
 
     <div id="theatreHere"></div>
 
-<<<<<<< HEAD
     <!DOCTYPE html>
 <html>
 
@@ -138,69 +137,6 @@ func getTime(input:String) -> String {
     return ("\(hour):\(minute)")
 }
 console.log(getTime);
-=======
-    <script>
-        // created this function to get rid of the error. To use google maps, you need to call this to define initMap that is called in the google maps script on the bottom.
-        function initMap() {};// this is for google maps. This will cause error if this function is not in the global scope
-        $("#start").on("click", function () {
-            event.preventDefault();
-            var zip1 = $("#zipcode").val();
-            var date = $("#date").val();
-            console.log(zip1);
-            console.log(date);
-            var queryUrl1 = 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip1 + '&api_key=8dyfezutfxys5435q4ehcqkp';
-            $.ajax({
-                method: "GET",
-                url: queryUrl1
-            }).then(function (response1) {
-                
-                var uniqueTheatreArray = [];
-                var displayObject = new Object();
-              
-                var theaterData = [];
-
-                for (var i = 0; i < response1.length; i++) {
-
-                    var movieTitles = response1[i].title; // Get name of movie
-
-                    for (var j = 0; j < response1[i].showtimes.length; j++) {
-
-                        var listOfTheatreNames = response1[i].showtimes[j].theatre.name; // Get name of theater
-                        var times = JSON.stringify(response1[i].showtimes[j].dateTime.match(/T.*/)).slice(3, 8); // Get showtime
-                        var timesFormat = moment(times, "H:mm").format("LT"); // Parse showtime format
-
-                        // Push properties theater, showtime, and time to var theaterData
-                        theaterData.push({ theater: listOfTheatreNames, showtime: timesFormat, title: movieTitles} );
-                    }
-                }
-                
-                for(var key in theaterData) {
-                    if(displayObject[theaterData[key].names]=== undefined && displayObject[theaterData[key].titles] === undefined){
-                        displayObject[theaterData[key].names] = theaterData[key].names+theaterData[key].titles;
-                    }
-                    
-                }
-              
-        console.log(theaterData);
-
-        //ES6 to separate out the duplicates
-        // var uniqueTheatre = a => uniqueTheatreArray.push([...new Set(a)]);
-        // uniqueTheatre(movieTheatreNames);
-        //going to append each theatre into a div
-        // for (var i =0; i<uniqueTheatreArray.length; i++) {
-        //     $("#theatreHere").append(uniqueTheatreArray[i]);
-        // }
-        //google maps api trying to get lat and long
-        var key = 'AIzaSyASKnjScxmEcAhuUUchHloDaPz3X3q7KV0';
-        var queryUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=' + key;
-        $.ajax({
-            method: "GET",
-            url: queryUrl
-        }).then(function (response) {
-        }) //==================END OF GOOGLE MAPS API AJAX===================================
-            }) //==================END OF GRACENOTE DEVELOPER API AJAX===================================
-        })//=====================END OF THE CLICK EVENT ===============================
->>>>>>> ddb80528f3347e0d13d20dea8809a591a71f458d
     </script>
 
 </body>
