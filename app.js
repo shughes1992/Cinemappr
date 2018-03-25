@@ -14,7 +14,6 @@ let searchObj = {}
 app.use(express.static('public'))
 
 app.post('/theaters', urlencodedParser, (req, res) => {
-    console.log(req.body.zipcode)
     searchObj = { 
         zipcode: req.body.zipcode,
         date: req.body.date,
