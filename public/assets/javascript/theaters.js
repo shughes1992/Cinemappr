@@ -40,7 +40,7 @@ $(document).ready(function () {
             var movieTitles = response1[i].title;
 
             for (var j = 0; j < response1[i].showtimes.length; j++) {
-                var listOfTheatreNames = response1[i].showtimes[j].theatre.name; 
+                var listOfTheatreNames = response1[i].showtimes[j].theatre.name;
                 var times = JSON.stringify(response1[i].showtimes[j].dateTime.match(/T.*/)).slice(3, 8);
                 var timesFormat = moment(times, "H:mm").format("LT"); // Parse showtime format
 
@@ -124,18 +124,76 @@ $(document).ready(function () {
             final_theater_object.movies_with_times = array_of_movies_at_this_theater_with_show_times;
 
             var jumbotron = $("<div class='showtime-listings'>");
-            $("#movies").append(jumbotron);
-            jumbotron.append("<h3>" + my_theater_name);
 
-            for (var k = 0; k < final_theater_object.movies_with_times.length; k++) {
-                console.log(final_theater_object.movies_with_times[k].title);
-                jumbotron.append("<h4>" + final_theater_object.movies_with_times[k].title)
+            function displayTheaterName() {
+                $("#movies").append(jumbotron);
+                jumbotron.append("<h3>" + my_theater_name);
+            }
 
+            function displayShowtimes() {
                 for (var l = 0; l < final_theater_object.movies_with_times[k].showtimes.length; l++) {
-                    console.log(final_theater_object.movies_with_times[k].showtimes[l]);
                     jumbotron.append("<p id='showtimes'>" + final_theater_object.movies_with_times[k].showtimes[l]);
                 }
             }
+
+            // If there is input for movie theater AND movie title
+            if ($("#movie-theater").val() === my_theater_name && $("#movie-title").val()) {
+                displayTheaterName();
+
+                for (var k = 0; k < final_theater_object.movies_with_times.length; k++) {
+                    if ($("#movie-title").val() === final_theater_object.movies_with_times[k].title) {
+                        jumbotron.append("<h4>" + final_theater_object.movies_with_times[k].title);
+                        displayShowtimes();
+                    }
+                }
+            }
+
+            // If there is input for movie theater ONLY
+            else if ($("#movie-theater").val() === my_theater_name && !$("#movie-title").val()) {
+                displayTheaterName();
+
+                for (var k = 0; k < final_theater_object.movies_with_times.length; k++) {
+                    jumbotron.append("<h4>" + final_theater_object.movies_with_times[k].title);
+                    displayShowtimes();
+                }
+            }
+
+            // If there is input for movie title ONLY
+            else if ($("#movie-title").val() && !$("#movie-theater").val()) {
+                for (var k = 0; k < final_theater_object.movies_with_times.length; k++) {
+
+                    if ($("#movie-title").val() === final_theater_object.movies_with_times[k].title) {
+                        displayTheaterName();
+                        jumbotron.append("<h4>" + final_theater_object.movies_with_times[k].title);
+                        displayShowtimes();
+                    }
+
+                }
+            }
+
+            // If there is no input for movie title OR movie theater
+            else if (!$("#movie-title").val() && !$("#movie-theater").val()) {
+                displayTheaterName();
+
+                for (var k = 0; k < final_theater_object.movies_with_times.length; k++) {
+                    jumbotron.append("<h4>" + final_theater_object.movies_with_times[k].title);
+                    displayShowtimes();
+                }
+            }
+
+            // var jumbotron = $("<div class='showtime-listings'>");
+            // $("#movies").append(jumbotron);
+            // jumbotron.append("<h3>" + my_theater_name);
+
+            // for (var k = 0; k < final_theater_object.movies_with_times.length; k++) {
+            //     console.log(final_theater_object.movies_with_times[k].title);
+            //     jumbotron.append("<h4>" + final_theater_object.movies_with_times[k].title)
+
+            //     for (var l = 0; l < final_theater_object.movies_with_times[k].showtimes.length; l++) {
+            //         console.log(final_theater_object.movies_with_times[k].showtimes[l]);
+            //         jumbotron.append("<p id='showtimes'>" + final_theater_object.movies_with_times[k].showtimes[l]);
+            //     }
+            // }
         }
     }
 })
