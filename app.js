@@ -17,7 +17,9 @@ app.post('/theaters', urlencodedParser, (req, res) => {
     searchObj = { 
         zipcode: req.body.zipcode,
         date: req.body.date,
-        radius: req.body.radius
+        radius: req.body.radius,
+        title: req.body.title,
+        theater: req.body.theater
     }
     res.sendFile(path.join(__dirname, 'public', 'theaters.html'))
 })

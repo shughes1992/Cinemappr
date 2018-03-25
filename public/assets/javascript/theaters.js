@@ -12,6 +12,8 @@ $(document).ready(function () {
         $("#zipcode").val(response.zipcode)
         $("#date").val(response.date)
         $("#radius").val(response.radius)
+        $("#movie-title").val(response.title)
+        $("#movie-theater").val(response.theater)
     })
 
     // Routes data from server request to GraceNote API, displays to the page
