@@ -1,4 +1,5 @@
 /* Main Body Styles */
+/* Main Body Styles */
 body {
   font-family: "Open Sans", sans-serif;
   background-color: white; }
@@ -10,7 +11,6 @@ body {
 
 .welcome::after {
   content: "";
-  background-image: url(../images/breakfast-at-tiffanys.jpg);
   background-size: 100% 100%;
   opacity: 0.6;
   top: 0;
@@ -52,12 +52,7 @@ a {
 .navbar-default .navbar-brand {
   color: #d3353e;
   font-size: 150px;
-  text-shadow: -5px 0 white, 0 5px white, 5px 0 white, 0 -5px white; }
-
-#about-link a {
-  font-family: "Pacifico", cursive;
-  padding: 20px 0;
-  top: 10px; }
+  text-shadow: -5px 0 #fff, 0 5px #fff, 5px 0 #fff, 0 -5px #fff; }
 
 #logo {
   font-family: "Pacifico", cursive;
@@ -72,7 +67,7 @@ a {
   transform: translateY(-50%); }
 
 form {
-  background-color: #ffffff;
+  background-color: white;
   padding: 25px;
   border-radius: 15px;
   /* margin: 0 10px; */
@@ -80,7 +75,7 @@ form {
 
 .submit-btn {
   width: 100%;
-  color: #fff;
+  color: white;
   background-color: #d3353e;
   padding: 10px;
   font-weight: 700; }
@@ -90,35 +85,21 @@ form {
   margin-top: 90px; }
 
 #showtimes {
-<<<<<<< HEAD:assets/css/style.css
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid #d3353e; }
+
+#search-results {
   background-color: #ebebeb;
-  min-height: 671px; }
+  min-height: 80vh; }
 
 .showtime-listings {
   background-color: white;
   border-radius: 15px;
   padding: 20px;
   margin: 20px auto; }
-=======
-    display: inline-block;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 15px;
-    border: 2px solid #d3353e;
-}
-
-#search-results {
-    background-color: #ebebeb;
-    min-height: 80vh;
-}
-
-.showtime-listings {
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 20px auto;
-}
->>>>>>> ddb80528f3347e0d13d20dea8809a591a71f458d:public/assets/css/style.css
 
 #map-results img {
   position: fixed;
