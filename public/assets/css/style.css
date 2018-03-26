@@ -43,6 +43,9 @@ a {
 .navbar-default .navbar-nav li a {
   color: white; }
 
+.navbar-default .navbar-nav li a:hover {
+  color: white; }
+
 .navbar-brand {
   transform: translateX(-50%);
   top: -7px;
@@ -53,6 +56,9 @@ a {
   color: #d3353e;
   font-size: 150px;
   text-shadow: -5px 0 #fff, 0 5px #fff, 5px 0 #fff, 0 -5px #fff; }
+
+.navbar-default .navbar-brand:hover {
+  color: #EA2F3A; }
 
 #logo {
   font-family: "Pacifico", cursive;
@@ -80,16 +86,28 @@ form {
   padding: 10px;
   font-weight: 700; }
 
+.submit-btn:hover {
+  background-color: #EA2F3A;
+  cursor: pointer;
+  box-shadow: 3px 3px 7px rgba(33, 33, 33, 0.5); }
+
 /* Results Page Styles */
 #results, .content {
   margin-top: 90px; }
 
 #showtimes {
   display: inline-block;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 15px;
-  border: 2px solid #d3353e; }
+  margin-right: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #d3353e;
+  color: white;
+  letter-spacing: 1px; }
+
+#showtimes:hover {
+  box-shadow: 3px 3px 7px rgba(33, 33, 33, 0.5);
+  cursor: pointer;
+  background-color: #EA2F3A; }
 
 #search-results {
   background-color: #ebebeb;
