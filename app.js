@@ -30,7 +30,8 @@ app.get('/location', (req, res) => res.json(searchObj))
 app.get('/getData', (req, res) => {
     const date = searchObj.date
     const zip = searchObj.zipcode
-    reqPromise('http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip + '&api_key=5txmyg6djz4epeb9m3h8rns3')
+    reqPromise('http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip + '&api_key=2dp7mrfsmqm3cgupxx4vh5e6')
+
     .then((response) => {
         res.json(response)
     }).catch((err) => {

@@ -1,3 +1,11 @@
+//calling google maps function initmap()
+var map;
+window.initMap = function () {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 39.9526, lng: -75.1652 },
+        zoom: 11
+    });
+}
 $(document).ready(function () {
     console.log("theater page linked")
 
@@ -53,6 +61,7 @@ $(document).ready(function () {
                 displayObject[theaterData[key].names] = theaterData[key].names + theaterData[key].titles;
             }
         }
+
 
         // Call addGoogleMaps function here, passing theaterData
 
@@ -135,7 +144,7 @@ $(document).ready(function () {
                     jumbotron.append("<p id='showtimes'>" + final_theater_object.movies_with_times[k].showtimes[l]);
                 }
             }
-
+          
             // If there is input for movie theater AND movie title
             if ($("#movie-theater").val() === my_theater_name && $("#movie-title").val()) {
                 displayTheaterName();
@@ -181,19 +190,29 @@ $(document).ready(function () {
                 }
             }
 
-            // var jumbotron = $("<div class='showtime-listings'>");
-            // $("#movies").append(jumbotron);
-            // jumbotron.append("<h3>" + my_theater_name);
+          var myTheaterNameForGooglePlaces = my_theater_name.replace(/\s/g, "+");
+            console.log(myTheaterNameForGooglePlaces);
 
-            // for (var k = 0; k < final_theater_object.movies_with_times.length; k++) {
-            //     console.log(final_theater_object.movies_with_times[k].title);
-            //     jumbotron.append("<h4>" + final_theater_object.movies_with_times[k].title)
+            var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyD9hHd2f2VIqsuz_zHv5m64UXiZgom6sLY'
+            //AIzaSyASKnjScxmEcAhuUUchHloDaPz3X3q7KV0     
+            $.ajax({
+                url: queryGooglePlaces,
+                type: "GET"
+            }).then(function (event) {
+                console.log(event);
+                // function to place all the markers on our theater locations
+                theaterMarkers = { lat: event.results[0].geometry.location.lat, lng: event.results[0].geometry.location.lng };
+                var marker = new google.maps.Marker({
+                    position: { lat: event.results[0].geometry.location.lat, lng: event.results[0].geometry.location.lng },
+                    map: map,
 
-            //     for (var l = 0; l < final_theater_object.movies_with_times[k].showtimes.length; l++) {
-            //         console.log(final_theater_object.movies_with_times[k].showtimes[l]);
-            //         jumbotron.append("<p id='showtimes'>" + final_theater_object.movies_with_times[k].showtimes[l]);
-            //     }
-            // }
+                    //icon: add image of marker icons
+                })
+                //this will recenter the google maps to the last marker placed
+                map.setCenter({ lat: event.results[0].geometry.location.lat, lng: event.results[0].geometry.location.lng });
+
+
+            })
         }
     }
 })
