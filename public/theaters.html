@@ -63,7 +63,7 @@
 
     <!-- Main body content -->
     <section id="results">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
 
                 <div class="col-md-6" id="search-results">
@@ -94,15 +94,19 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <p>
-                                        <span class="glyphicon glyphicon-plus-sign"></span> More options</p>
-                                    <div class="form-group">
-                                        <label for="movie-title">Movie Title</label>
-                                        <input type="text" class="form-control" id="movie-title" name="title" placeholder="Optional">
+                                    <div class="more-options">
+                                        <span class="glyphicon glyphicon-plus-sign" id="toggle-sign"></span>
+                                        <p id="options"> More options</p>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="movie-title">Movie Theater</label>
-                                        <input type="text" class="form-control" id="movie-theater" name="theater" placeholder="Optional">
+                                    <div id="show-hide">
+                                        <div class="form-group">
+                                            <label for="movie-title">Movie Title</label>
+                                            <input type="text" class="form-control" id="movie-title" placeholder="Optional">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="movie-theater">Movie Theater</label>
+                                            <input type="text" class="form-control" id="movie-theater" placeholder="Optional">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -114,11 +118,12 @@
 
                 </div>
                 <div class="col-md-6" style="min-height: 80vh; position: sticky; top: 20%">
-                       <div id="map" style="min-height: 80vh"></div>
-                    </div>
+                    <div id="map" style="min-height: 80vh"></div>
+                </div>
             </div>
     </section>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv7taMhfo9vK1l-HC1iBruuwsods1K5Hg&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv7taMhfo9vK1l-HC1iBruuwsods1K5Hg&callback=initMap" async
+        defer></script>
 </body>
 
 </html>

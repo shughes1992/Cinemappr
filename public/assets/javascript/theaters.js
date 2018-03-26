@@ -9,9 +9,23 @@ window.initMap = function () {
 $(document).ready(function () {
     console.log("theater page linked")
 
+    // show and hide movie title and theater query options
+    $(".more-options").on("click", function (event) {
+        if ($("#options").text() == " More options") {
+            $("#options").text(" Hide options");
+            $("#toggle-sign").attr("class", "glyphicon glyphicon-minus-sign");
+        } else {
+            $("#options").text(" More options");
+            $("#toggle-sign").attr("class", "glyphicon glyphicon-plus-sign");
+        }
+        $("#show-hide").fadeToggle("slow", "swing");
+
+        return false;
+    });
+
     // TODO: write addGoogleMaps function
 
-    // Passes data from the index page to populate the serach form on theaters page
+    // Passes data from the index page to populate the search form on theaters page
     $.ajax({
         url: "/location",
         method: "GET"
@@ -144,7 +158,7 @@ $(document).ready(function () {
                     jumbotron.append("<p id='showtimes'>" + final_theater_object.movies_with_times[k].showtimes[l]);
                 }
             }
-          
+
             // If there is input for movie theater AND movie title
             if ($("#movie-theater").val() === my_theater_name && $("#movie-title").val()) {
                 displayTheaterName();
@@ -190,11 +204,14 @@ $(document).ready(function () {
                 }
             }
 
-          var myTheaterNameForGooglePlaces = my_theater_name.replace(/\s/g, "+");
+            var myTheaterNameForGooglePlaces = my_theater_name.replace(/\s/g, "+");
             console.log(myTheaterNameForGooglePlaces);
 
-            var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyD9hHd2f2VIqsuz_zHv5m64UXiZgom6sLY'
-            //AIzaSyASKnjScxmEcAhuUUchHloDaPz3X3q7KV0     
+            // var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyD9hHd2f2VIqsuz_zHv5m64UXiZgom6sLY'
+            //AIzaSyASKnjScxmEcAhuUUchHloDaPz3X3q7KV0
+            // Tegan's API Key: AIzaSyC2pDiPtNXvox6k0Cgit7UHEEvGTjnkG8s
+            var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyC2pDiPtNXvox6k0Cgit7UHEEvGTjnkG8s'
+
             $.ajax({
                 url: queryGooglePlaces,
                 type: "GET"

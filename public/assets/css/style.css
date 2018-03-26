@@ -79,6 +79,15 @@ form {
   /* margin: 0 10px; */
   /* opacity: .95; */ }
 
+.more-options:hover {
+  cursor: pointer; }
+
+#options {
+  display: inline-block; }
+
+#show-hide {
+  display: none; }
+
 .submit-btn {
   width: 100%;
   color: white;
