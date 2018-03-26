@@ -14,11 +14,12 @@ let searchObj = {}
 app.use(express.static('public'))
 
 app.post('/theaters', urlencodedParser, (req, res) => {
-    console.log(req.body.zipcode)
     searchObj = { 
         zipcode: req.body.zipcode,
         date: req.body.date,
-        radius: req.body.radius
+        radius: req.body.radius,
+        title: req.body.title,
+        theater: req.body.theater
     }
     res.sendFile(path.join(__dirname, 'public', 'theaters.html'))
 })
@@ -29,7 +30,7 @@ app.get('/location', (req, res) => res.json(searchObj))
 app.get('/getData', (req, res) => {
     const date = searchObj.date
     const zip = searchObj.zipcode
-    reqPromise('http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip + '&api_key=8dyfezutfxys5435q4ehcqkp')
+    reqPromise('http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip + '&api_key=2dp7mrfsmqm3cgupxx4vh5e6')
     .then((response) => {
         res.json(response)
     }).catch((err) => {

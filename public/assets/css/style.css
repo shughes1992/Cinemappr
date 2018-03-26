@@ -1,142 +1,122 @@
 /* Main Body Styles */
+/* Main Body Styles */
 body {
-    font-family: "Open Sans", sans-serif;
-    background-color: #fff;
-}
+  font-family: "Open Sans", sans-serif;
+  background-color: white; }
 
 .welcome {
-    height: 100vh;
-    display: block;
-    position: relative;
-}
-  
+  height: 100vh;
+  display: block;
+  position: relative; }
+
 .welcome::after {
-    content: "";
-    background-image: url(../images/breakfast-at-tiffanys.jpg);
-    background-size: 100% 100%;
-    opacity: 0.6;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;   
-}
+  content: "";
+  background-size: 100% 100%;
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
 
 h1 {
-    color: #fff;
-    opacity: 1;
-    text-align: center;
-    font-family: "Pacifico", cursive;
-    margin: 20px auto;
-    text-shadow: 3px 3px rgba(0, 0, 0, .8);
-}
+  color: white;
+  opacity: 1;
+  text-align: center;
+  font-family: "Pacifico", cursive;
+  margin: 20px auto;
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.8); }
 
 a {
-    color: #fff;
-    text-decoration: none;
-}
+  color: white;
+  text-decoration: none; }
 
 /* Navigation Styles */
 .navbar {
-    background-color: #d3353e;
-}
+  background-color: #d3353e; }
 
 /* .navbar-home {
     background: linear-gradient(to bottom, #d3353e 0%, rgba(0,0,0,0) 100%);
     border-bottom: none;
 } */
-
-.navbar-default  .navbar-nav li a {
-    color: #fff;
-}
+.navbar-default .navbar-nav li a {
+  color: white; }
 
 .navbar-brand {
-    transform: translateX(-50%);
-    top: -7px;
-    left: 51%;
-    position: absolute;
-}
+  transform: translateX(-50%);
+  top: -7px;
+  left: 51%;
+  position: absolute; }
 
 .navbar-default .navbar-brand {
-    color: #d3353e;
-    font-size: 150px;
-    text-shadow: -5px 0 #fff, 0 5px #fff, 5px 0 #fff, 0 -5px #fff;
-}
+  color: #d3353e;
+  font-size: 150px;
+  text-shadow: -5px 0 #fff, 0 5px #fff, 5px 0 #fff, 0 -5px #fff; }
 
 #logo {
-    font-family: "Pacifico", cursive;
-    font-size: 40px;
-    padding: 20px 0;
-}
+  font-family: "Pacifico", cursive;
+  font-size: 40px;
+  padding: 20px 0; }
 
 /* Landing Page Styles */
 .landing-page {
-    position: absolute;
-    top: 60%;
-    width: 100%;
-    transform: translateY(-50%);
-}
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  transform: translateY(-50%); }
 
 form {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 15px;
-    /* margin: 0 10px; */
-    /* opacity: .95; */
-}
+  background-color: white;
+  padding: 25px;
+  border-radius: 15px;
+  /* margin: 0 10px; */
+  /* opacity: .95; */ }
 
 .submit-btn {
-    width: 100%;
-    color: #fff;
-    background-color: #d3353e;
-    padding: 10px;
-    font-weight: 700;
-}
+  width: 100%;
+  color: white;
+  background-color: #d3353e;
+  padding: 10px;
+  font-weight: 700; }
 
 /* Results Page Styles */
 #results, .content {
-    margin-top: 90px;
-}
+  margin-top: 90px; }
 
 #showtimes {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 15px;
-    border: 2px solid #d3353e;
-}
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid #d3353e; }
 
 #search-results {
-    background-color: #ebebeb;
-    min-height: 80vh;
-}
+  background-color: #ebebeb;
+  min-height: 80vh; }
 
 .showtime-listings {
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 20px auto;
-}
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto; }
 
 #map-results img {
-    position: fixed;
-    max-width: 585px;
-}
+  position: fixed;
+  max-width: 585px; }
 
 /* About Page Styles */
 .content h1 {
-    color: #000;
-    text-shadow: none;
-    text-align: left;
-    padding-top: 20px;
-}
+  color: #000;
+  text-shadow: none;
+  text-align: left;
+  padding-top: 20px; }
 
 .profile {
-    max-width: 200px;
-    border-radius: 50%;
-}
+  max-width: 200px;
+  border-radius: 50%; }
 
 .about {
-    margin-bottom: 30px;
-}
+  margin-bottom: 30px; }
+
+/*# sourceMappingURL=style.css.map */
