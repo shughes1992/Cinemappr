@@ -31,6 +31,7 @@ app.get('/getData', (req, res) => {
     const date = searchObj.date
     const zip = searchObj.zipcode
     reqPromise('http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip + '&api_key=2dp7mrfsmqm3cgupxx4vh5e6')
+
     .then((response) => {
         res.json(response)
     }).catch((err) => {
