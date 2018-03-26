@@ -106,7 +106,7 @@ $(document).ready(function () {
                 parse_data(theaterData2[i].theater, theaterData);
             }
         }
-        
+
         loopThroughTheaters();
 
         function parse_data(my_theater_name, theaterData) {
@@ -218,20 +218,24 @@ $(document).ready(function () {
             // Tegan's API Key: AIzaSyC2pDiPtNXvox6k0Cgit7UHEEvGTjnkG8s
             // var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyC2pDiPtNXvox6k0Cgit7UHEEvGTjnkG8s'
 
-            var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyDBkZBVW-dII2-MbnRtJL8Qk99eMR-sjbs'
+            // var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyDBkZBVW-dII2-MbnRtJL8Qk99eMR-sjbs'
+            // Sam's API Key: AIzaSyAsCHeUDG0zhBRHXHgYQM2dIls9fYXgy-k
+            var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyAsCHeUDG0zhBRHXHgYQM2dIls9fYXgy-k'
+
+
             $.ajax({
                 url: queryGooglePlaces,
                 type: "GET"
             }).then(function (event) {
                 console.log(event);
-                
+
                 // function to place all the markers on our theater locations
                 theaterMarkers = { lat: event.results[0].geometry.location.lat, lng: event.results[0].geometry.location.lng };
                 var marker = new google.maps.Marker({
                     position: { lat: event.results[0].geometry.location.lat, lng: event.results[0].geometry.location.lng },
                     map: map,
                 })
-                
+
                 //this will recenter the google maps to the last marker placed
                 map.setCenter({ lat: event.results[0].geometry.location.lat, lng: event.results[0].geometry.location.lng });
                 //adding infoWindow to display direction icons, address, and theater names
@@ -251,7 +255,7 @@ $(document).ready(function () {
                     };
                 })(marker, contentString, infoWindow));
 
-            }) 
+            })
         }
     }
 })
