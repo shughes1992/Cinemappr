@@ -9,7 +9,6 @@ window.initMap = function () {
 
 //adding a loading gif to wait for all the ajax to complete
 
-
 $(document).ready(function () {
     console.log("theater page linked")
 
@@ -220,6 +219,7 @@ $(document).ready(function () {
             var myTheaterNameForGooglePlaces = my_theater_name.replace(/\s/g, "+");
             console.log(myTheaterNameForGooglePlaces);
 
+
             // var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyD9hHd2f2VIqsuz_zHv5m64UXiZgom6sLY'
             //AIzaSyASKnjScxmEcAhuUUchHloDaPz3X3q7KV0
             // Tegan's API Key: AIzaSyC2pDiPtNXvox6k0Cgit7UHEEvGTjnkG8s
@@ -250,7 +250,7 @@ $(document).ready(function () {
                 //this will recenter the google maps to the last marker placed
                 map.setCenter({ lat: event.results[0].geometry.location.lat, lng: event.results[0].geometry.location.lng });
                 //adding infoWindow to display direction icons, address, and theater names
-                var contentString = "<h3>" + my_theater_name + "</h3>" + '<button id="facebook" style="cursor:pointer;" onClick="window.open(\'https://www.google.com/maps/dir/' + myTheaterNameForGooglePlaces + '\',\'_newtab\');">Directions</button>'
+                var contentString = "<h3>" + my_theater_name + "</h3>" + '<button id="directions" style="cursor:pointer;" onClick="window.open(\'https://www.google.com/maps/dir/' + myTheaterNameForGooglePlaces + '\',\'_newtab\');">Directions</button>'
                 var infoWindow = new google.maps.InfoWindow({})
 
                 google.maps.event.addListener(marker, 'click', (function (marker, contentString, infoWindow) {
@@ -267,6 +267,12 @@ $(document).ready(function () {
                 })(marker, contentString, infoWindow));
 
             })
+
+            //adding the spinning wheel
+
+
         }
     }
 })
+
+

@@ -51,8 +51,8 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="about.html">About</a>
+                    <li id="about-link">
+                        <a href="about.html">About Us</a>
                     </li>
                 </ul>
             </div>
@@ -70,28 +70,18 @@
                     <form id="resubmit-search" action="/search" method="post">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label for="location">*Where</label>
                                     <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
                                         maxlength="5" min="0" class="form-control" id="zipcode" name="zipcode" placeholder="Zipcode"> </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="date">*When</label>
                                         <input type="date" class="form-control" id="date" name="date">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="radius">Radius</label>
-                                        <select class="form-control" id="radius" name="radius">
-                                            <option value="1">1 mi</option>
-                                            <option value="5" selected>5 mi</option>
-                                            <option value="10">10 mi</option>
-                                            <option value="15">15 mi</option>
-                                            <option value="20">20 mi</option>
-                                            <option value="25">25 mi</option>
-                                        </select>
-                                    </div>
+                                    
                                 </div>
                                 <div class="col-md-12">
                                     <div class="more-options">
@@ -113,8 +103,13 @@
                             <input type="submit" value="Search" class="submit-btn" id="start">
                         </div>
                     </form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="movies"></div>
+                        </div>
+                    </div>
 
-                    <div id="movies"></div>
+
 
                 </div>
                 <div class="col-md-6" style="min-height: 80vh; position: sticky; top: 20%">
@@ -126,4 +121,6 @@
         defer></script>
 </body>
 
-</html>
+
+
+<!-- loader  -->
