@@ -49,12 +49,22 @@ $(document).ready(function () {
         method: "GET"
     }).then(response => getMovieData(response));
 
-    // Allows user to resubmit search from theaters display page
-    $("#start").on("click", function (event) {
-        $.ajax({
-            url: "/getData",
-            method: "GET"
-        }).then((response) => getMovieData(response))
+    // Handles posting data to server from secondary search form
+    $("#resubmit-search").submit(function(event){
+        event.preventDefault();
+
+        var $form = $(this),
+            zip = $form.find("input[name='zipcode']").val(),
+            date = $form.find("input[name='date']").val(),
+            radius = $form.find("input[name='radius']").val(),
+            title = $form.find("input[name='title']").val(),
+            theater = $form.find("input[name='theater']").val(),
+            url = $form.attr("action");
+        
+        var posting = $.post(url, {zipcode: zip, date: date, radius: radius, title: title, theater: theater});
+        posting.done(function(data){
+            getMovieData(data);
+        })
     })
 
     function getMovieData(response) {
@@ -80,9 +90,6 @@ $(document).ready(function () {
                 displayObject[theaterData[key].names] = theaterData[key].names + theaterData[key].titles;
             }
         }
-
-
-        // Call addGoogleMaps function here, passing theaterData
 
         var holder = {};
         theaterData.forEach(function (element) {
@@ -216,12 +223,16 @@ $(document).ready(function () {
             // var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyD9hHd2f2VIqsuz_zHv5m64UXiZgom6sLY'
             //AIzaSyASKnjScxmEcAhuUUchHloDaPz3X3q7KV0
             // Tegan's API Key: AIzaSyC2pDiPtNXvox6k0Cgit7UHEEvGTjnkG8s
+<<<<<<< HEAD
+            var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyAsCHeUDG0zhBRHXHgYQM2dIls9fYXgy-k'
+=======
             // var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyC2pDiPtNXvox6k0Cgit7UHEEvGTjnkG8s'
 
             // var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyDBkZBVW-dII2-MbnRtJL8Qk99eMR-sjbs'
             // Sam's API Key: AIzaSyAsCHeUDG0zhBRHXHgYQM2dIls9fYXgy-k
             var queryGooglePlaces = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + myTheaterNameForGooglePlaces + '&key=AIzaSyAsCHeUDG0zhBRHXHgYQM2dIls9fYXgy-k'
 
+>>>>>>> 530e369a263ef99c35face8a2433c85f51330ca2
 
             $.ajax({
                 url: queryGooglePlaces,
