@@ -7,7 +7,7 @@ const path = require('path')
 const app = express()
 
 const jsonParser = bodyParser.json()
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
+const urlencodedParser = bodyParser.urlencoded({ extended: true })
 
 let searchObj = {}
 
@@ -26,6 +26,31 @@ app.post('/theaters', urlencodedParser, (req, res) => {
 
 app.get('/location', (req, res) => res.json(searchObj))
 
+app.post('/search', urlencodedParser, (req, res) => {
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    console.log(req.body)
+    searchObj = { 
+        zipcode: req.body.zipcode,
+        date: req.body.date,
+        radius: req.body.radius,
+        title: req.body.title,
+        theater: req.body.theater
+    }
+
+    const date = searchObj.date
+    const zip = searchObj.zipcode
+    console.log(date)
+    console.log(zip)
+
+    reqPromise('http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip + '&api_key=5txmyg6djz4epeb9m3h8rns3')
+
+    .then((response) => {
+        res.json(response)
+    }).catch((err) => {
+        console.error(err)
+    })
+
+})
 
 app.get('/getData', (req, res) => {
     const date = searchObj.date
