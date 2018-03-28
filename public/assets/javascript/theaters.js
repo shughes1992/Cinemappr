@@ -52,7 +52,8 @@ $(document).ready(function () {
     // Handles posting data to server from secondary search form
     $("#resubmit-search").submit(function (event) {
         event.preventDefault();
-
+        $("#movies").empty();
+        
         var $form = $(this),
             zip = $form.find("input[name='zipcode']").val(),
             date = $form.find("input[name='date']").val(),
