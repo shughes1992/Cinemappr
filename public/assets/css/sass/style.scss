@@ -209,5 +209,20 @@ form {
     margin-bottom: 30px;
 }
 
+/* Modal Styles*/
+
+.modal-body {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.modal-title{
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+}
+
 //preloader CSS
 
